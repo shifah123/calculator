@@ -1,0 +1,82 @@
+@import '../../styles/variables.scss';
+
+@each $theme in 1 2 3 {
+	.keypad-#{$theme} {
+		padding: 32px;
+		display: grid;
+		grid-gap: 25px;
+		grid-template-columns: repeat(4, 100px);
+		grid-template-rows: repeat(5, 64px);
+		border-radius: 10px;
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		-ms-border-radius: 10px;
+		-o-border-radius: 10px;
+		background-color: map-get($background-keypad, $theme);
+
+		@media screen and (max-width: 600px) {
+			padding: 24px;
+			grid-gap: 13px;
+			grid-template-columns: repeat(4, 1fr);
+		}
+
+		button {
+			border-radius: 10px;
+			-webkit-border-radius: 10px;
+			-moz-border-radius: 10px;
+			-ms-border-radius: 10px;
+			-o-border-radius: 10px;
+			font-size: 30px;
+			cursor: pointer;
+		}
+
+		.key-#{$theme} {
+			font-size: 40px;
+			background-color: map-get($key-background, $theme);
+			border-bottom: 4px solid map-get($key-shadow, $theme);
+			color: map-get($text-key, $theme);
+
+			&:hover {
+				background-color: map-get($key-background-hover, $theme);
+			}
+
+			@media screen and (max-width: 600px) {
+				font-size: 30px;
+			}
+		}
+
+		.del-key-#{$theme},
+		.reset-key-#{$theme} {
+			background-color: map-get($key-del-reset-background, $theme);
+			border-bottom: 4px solid map-get($key-del-reset-shadow, $theme);
+			color: map-get($text-key-del-reset, $theme);
+
+			&:hover {
+				background-color: map-get($key-del-reset-background-hover, $theme);
+			}
+
+			@media screen and (max-width: 600px) {
+				font-size: 20px;
+			}
+		}
+
+		.reset-key-#{$theme} {
+			grid-column: 1 / 3;
+		}
+
+		.equal-key-#{$theme} {
+			background-color: map-get($key-equal-background, $theme);
+			border-bottom: 4px solid map-get($key-equal-shadow, $theme);
+			color: map-get($text-key-equal, $theme);
+			grid-column: 3 / 5;
+
+			&:hover {
+				background-color: map-get($key-equal-background-hover, $theme);
+			}
+
+			@media screen and (max-width: 600px) {
+				font-size: 20px;
+			}
+		}
+	}
+}
